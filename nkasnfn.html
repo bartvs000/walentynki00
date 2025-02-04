@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Judi, czy zostaniesz moją walentynką?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffe6e6;
+            padding-top: 50px;
+        }
+        h1 {
+            color: #d147a3;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        .button {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        #yes {
+            background-color: #ff4d79;
+            color: white;
+        }
+        #no {
+            background-color: #666;
+            color: white;
+        }
+        #share {
+            background-color: #4CAF50;
+            color: white;
+        }
+        img {
+            width: 200px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <img src="https://i.imgur.com/1J5IQkD.png" alt="Miś z serduszkiem">
+    <h1>Judi, czy zostaniesz moją walentynką? ❤️</h1>
+    <div class="container">
+        <button id="yes" class="button" onclick="yesClicked()">Tak</button>
+        <button id="no" class="button" onclick="noClicked()">Nie</button>
+    </div>
+    <div class="container">
+        <button id="share" class="button" onclick="sharePage()">Udostępnij</button>
+    </div>
+    
+    <script>
+        let yesButton = document.getElementById("yes");
+        let noButton = document.getElementById("no");
+        let size = 20;
+
+        const messages = [
+            "Czy jesteś pewna? ",
+            "Na pewno? ",
+            "Przemyśl to jeszcze raz! ",
+            "Ale dlaczego? ",
+            "Siurku przemyśl to ",
+            "To bo nie będzie seksiku 😏",
+            "DEBILKO ZAZNACZ TO TAK 😞",
+            "NO PROSZEEEEEE "
+        ];
+
+        function yesClicked() {
+            alert("Wiedziałem, że powiesz TAK! ❤️");
+            yesButton.style.fontSize = "20px";
+        }
+
+        function noClicked() {
+            let randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            alert(randomMessage);
+            size += 10;
+            yesButton.style.fontSize = size + "px";
+            if (size >= 100) {
+                alert("Nie ma już odwrotu! Musisz powiedzieć TAK! 😂");
+            }
+        }
+
+        function sharePage() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                alert("Link został skopiowany do schowka! Udostępnij go komu chcesz ❤️");
+            }).catch(err => {
+                console.error("Błąd kopiowania linku", err);
+            });
+        }
+    </script>
+</body>
+</html>
